@@ -1,3 +1,4 @@
+import 'package:captain_zero/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:neopop/neopop.dart';
 
@@ -8,13 +9,14 @@ class GrandButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final BrandColors colors = Theme.of(context).extension<BrandColors>()!;
     return NeoPopTiltedButton(
       isFloating: true,
-      onTapUp: () {},
+      onTapUp: onPress,
       decoration: NeoPopTiltedButtonDecoration(
-        color: Colors.black,
+        color: colors.brandColor1!,
         plunkColor: Colors.grey.shade900,
-        shadowColor: const Color(0xff45C074),
+        shadowColor: colors.brandColor2!,
         showShimmer: true,
       ),
       child: Padding(
@@ -25,7 +27,7 @@ class GrandButton extends StatelessWidget {
         child: Text(
           text,
           style:
-              const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              TextStyle(color: colors.brandColor5, fontWeight: FontWeight.bold),
         ),
       ),
     );

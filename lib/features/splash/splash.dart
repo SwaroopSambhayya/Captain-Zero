@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:captain_zero/shared/components/grand_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:neopop/neopop.dart';
 import 'package:rive/rive.dart';
@@ -59,7 +60,11 @@ class SplashScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 30),
-                  child: GrandButton(onPress: () {}, text: "Start Journey !"),
+                  child: GrandButton(
+                      onPress: () {
+                        context.go('/level2');
+                      },
+                      text: "Start Journey !"),
                 ),
               ),
             ),
