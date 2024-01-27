@@ -47,7 +47,6 @@ class _WordleState extends ConsumerState<Wordle> {
   @override
   Widget build(BuildContext context) {
     final BrandColors colors = Theme.of(context).extension<BrandColors>()!;
-    int score = ref.watch(scoreTracker);
     ref.listen(scoreTracker, (previous, next) {
       if (next % 3 == 0) {
         if (next != (words.length * 3)) {
@@ -63,6 +62,8 @@ class _WordleState extends ConsumerState<Wordle> {
       children: [
         Consumer(
           builder: (context, ref, child) {
+            int score = ref.watch(scoreTracker);
+
             return Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Text(
