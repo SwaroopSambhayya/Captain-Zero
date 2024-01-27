@@ -22,7 +22,7 @@ class Level2 extends ConsumerWidget {
     });
     return Scaffold(
       appBar: const CustomAppBar(
-        title: "Fun With Wordle",
+        title: "Jumble and Scramble",
         leadingText: "Level 2",
         iconData: Icons.help,
       ),

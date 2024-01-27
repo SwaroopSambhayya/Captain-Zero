@@ -19,12 +19,12 @@ class Wordle extends ConsumerStatefulWidget {
 class _WordleState extends ConsumerState<Wordle> {
   List<List<String>> words = [
     ["PLANET", "HYDRO", "FOSSIL"],
-    // ["FUEL", "ENERGY", "COAL"],
-    // ["CARBON", "SMOKE", "GREEN"],
-    // ["SOLAR", "WIND", "AIR"],
-    // ["WATER", "REUSE", "FOREST"],
-    // ["SUSTAIN", "POWER", "EARTH"],
-    // ["SOIL", "PLANT", "TREE"],
+    ["FUEL", "ENERGY", "COAL"],
+    ["CARBON", "SMOKE", "GREEN"],
+    ["SOLAR", "WIND", "AIR"],
+    ["WATER", "REUSE", "FOREST"],
+    ["SUSTAIN", "POWER", "EARTH"],
+    ["SOIL", "PLANT", "TREE"],
     // ["FILTER", "FOREST", "CLIMATE"],
     // ["SUSTAIN", "HARVEST", "NATURAL"]
   ];
