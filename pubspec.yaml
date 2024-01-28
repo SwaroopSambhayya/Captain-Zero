@@ -39,6 +39,7 @@ dependencies:
   lottie: ^3.0.0
   neopop: ^1.0.2
   rive: ^0.12.4
+  flame: ^1.14.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -57,7 +58,11 @@ flutter:
   assets:
     - lib/shared/assets/
     - lib/shared/assets/images/
-  #   - images/a_dot_ham.jpeg
+    - assets/images/bottle.png
+    - assets/images/plastic.png
+    - assets/images/bin.png
+    - assets/images/tin.png
+    - assets/images/paper.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

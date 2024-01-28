@@ -5,7 +5,6 @@ import 'package:captain_zero/shared/components/grand_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
-import 'package:neopop/neopop.dart';
 import 'package:rive/rive.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -62,7 +61,7 @@ class SplashScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 30),
                   child: GrandButton(
                       onPress: () {
-                        context.go('/level2');
+                        context.go('/level1');
                       },
                       text: "Start Journey !"),
                 ),

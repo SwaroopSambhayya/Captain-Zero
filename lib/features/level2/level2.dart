@@ -1,8 +1,6 @@
 import 'package:captain_zero/features/level2/components/wordle/wordle.dart';
-import 'package:captain_zero/features/level2/providers/score_tracker.dart';
 import 'package:captain_zero/features/level2/utils/help_dialog.dart';
 import 'package:captain_zero/shared/components/level_App_bar.dart';
-import 'package:captain_zero/shared/components/normal_button.dart';
 import 'package:captain_zero/shared/enums.dart';
 import 'package:captain_zero/shared/providers/game_state.dart';
 import 'package:captain_zero/shared/theme.dart';

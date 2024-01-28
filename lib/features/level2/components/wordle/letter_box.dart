@@ -1,6 +1,4 @@
 import 'package:captain_zero/features/level2/components/wordle/empty_box.dart';
-import 'package:captain_zero/features/level2/components/wordle/wordle.dart';
-import 'package:captain_zero/features/level2/providers/score_tracker.dart';
 import 'package:captain_zero/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

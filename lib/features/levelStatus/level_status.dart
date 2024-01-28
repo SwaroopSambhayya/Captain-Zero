@@ -1,7 +1,7 @@
 import 'package:captain_zero/features/levelStatus/utils.dart';
 import 'package:captain_zero/shared/components/grand_button.dart';
-import 'package:captain_zero/shared/components/normal_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 
 class LevelCompleted extends StatelessWidget {
@@ -46,10 +46,18 @@ class LevelCompleted extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
-            Flexible(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: GrandButton(onPress: () {}, text: "Continue Journey!"),
+            Visibility(
+              visible: level < 3,
+              child: Flexible(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: GrandButton(
+                    onPress: () {
+                      context.go('/level${level + 1}');
+                    },
+                    text: "Continue Journey!",
+                  ),
+                ),
               ),
             )
           ],
