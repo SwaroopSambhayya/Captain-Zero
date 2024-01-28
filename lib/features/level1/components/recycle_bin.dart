@@ -1,4 +1,5 @@
-import 'package:captain_zero/features/game/level1/game.dart';
+
+import 'package:captain_zero/features/level1/level1.dart';
 import 'package:flame/components.dart';
 
 class RecycleBin extends SpriteComponent with HasGameRef<RecycleGame> {

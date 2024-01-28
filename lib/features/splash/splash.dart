@@ -61,7 +61,7 @@ class SplashScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 30),
                   child: GrandButton(
                       onPress: () {
-                        context.go('/level2');
+                        context.go('/level1');
                       },
                       text: "Start Journey !"),
                 ),

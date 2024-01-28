@@ -4,30 +4,35 @@ import 'package:flutter/material.dart';
 
 showHelpDialog(BuildContext context, int level) {
   showDialog(
-      context: context,
-      builder: (context) {
-        return Dialog(
-          backgroundColor: Colors.transparent,
-          alignment: Alignment.center,
-          insetPadding: const EdgeInsets.symmetric(horizontal: 20),
-          child: CustomDialog(
-            dialogAsset: 'lib/shared/assets/images/Level$level.png',
-            details: getHelpDetailsonLevel(level),
-          ),
-        );
-      });
+    context: context,
+    builder: (context) {
+      return Dialog(
+        backgroundColor: Colors.transparent,
+        alignment: Alignment.center,
+        insetPadding: const EdgeInsets.symmetric(horizontal: 20),
+        child: CustomDialog(
+          dialogAsset: 'lib/shared/assets/images/Level$level.png',
+          details: getHelpDetailsonLevel(level),
+        ),
+      );
+    },
+  );
 }
 
 HelpDialogDetails getHelpDetailsonLevel(int level) {
   switch (level) {
     case 1:
-      return HelpDialogDetails(title: game1, description: "", hintMessage: "");
+      return HelpDialogDetails(
+        title: game1,
+        description: scoopTrashDescription,
+        hintMessage: level1HintMessage,
+      );
     case 2:
       return HelpDialogDetails(
-          title: game2,
-          description: jumbledWordDescription,
-          hintMessage:
-              "All the words here are built to bring awareness regarding sustainability");
+        title: game2,
+        description: jumbledWordDescription,
+        hintMessage: level2HintMessage,
+      );
     default:
       return const HelpDialogDetails(
           title: "", description: "", hintMessage: "");
@@ -38,8 +43,9 @@ class HelpDialogDetails {
   final String title;
   final String description;
   final String hintMessage;
-  const HelpDialogDetails(
-      {required this.title,
-      required this.description,
-      required this.hintMessage});
+  const HelpDialogDetails({
+    required this.title,
+    required this.description,
+    required this.hintMessage,
+  });
 }

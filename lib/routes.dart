@@ -1,3 +1,4 @@
+import 'package:captain_zero/features/level1/level1.dart';
 import 'package:captain_zero/features/level2/level2.dart';
 import 'package:captain_zero/features/levelStatus/level_status.dart';
 import 'package:captain_zero/features/splash/splash.dart';
@@ -8,6 +9,10 @@ final router = GoRouter(
     GoRoute(
       path: '/',
       builder: (context, state) => const SplashScreen(),
+    ),
+    GoRoute(
+      path: '/level1',
+      builder: (context, state) => const Level1(),
     ),
     GoRoute(
       path: '/level2',
