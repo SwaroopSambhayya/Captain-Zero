@@ -1,5 +1,6 @@
 import 'package:captain_zero/features/level2/components/wordle/wordle.dart';
 import 'package:captain_zero/features/level2/providers/score_tracker.dart';
+import 'package:captain_zero/features/level2/utils/help_dialog.dart';
 import 'package:captain_zero/shared/components/level_App_bar.dart';
 import 'package:captain_zero/shared/components/normal_button.dart';
 import 'package:captain_zero/shared/enums.dart';
@@ -21,10 +22,13 @@ class Level2 extends ConsumerWidget {
       }
     });
     return Scaffold(
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
         title: "Jumble and Scramble",
         leadingText: "Level 2",
         iconData: Icons.help,
+        onActionPress: () {
+          showHelpDialog(context, 2);
+        },
       ),
       body: Column(
         children: [

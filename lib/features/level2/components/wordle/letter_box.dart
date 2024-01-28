@@ -51,6 +51,7 @@ class _LetterBoxState extends ConsumerState<LetterBox> {
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.1,
                 height: MediaQuery.of(context).size.width * 0.1,
+                alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: colors.brandColor3,
                   border: Border(

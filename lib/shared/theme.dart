@@ -6,16 +6,18 @@ ThemeData gameTheme = ThemeData(
     primaryColor: Colors.black,
     iconTheme: const IconThemeData(color: Colors.white),
     cardColor: const Color(0xff45C074),
+    dialogTheme: const DialogTheme(backgroundColor: Colors.black),
     extensions: const <ThemeExtension<dynamic>>[
       BrandColors(
-          brandColor1: Colors.black,
-          brandColor2: Color(0xff45C074),
-          brandColor3: Color(0xffF6A69B),
-          brandColor4: Color(0xff89A5E3),
-          brandColor5: Colors.white,
-          borderColor1: Color(0xFF2C2C2C),
-          borderColor2: Color(0xFF1F8A5D),
-          borderColor3: Color(0xffF27C6C))
+        brandColor1: Colors.black,
+        brandColor2: Color(0xff45C074),
+        brandColor3: Color(0xffF6A69B),
+        brandColor4: Color(0xff89A5E3),
+        brandColor5: Colors.white,
+        borderColor1: Color(0xFF2C2C2C),
+        borderColor2: Color(0xFF1F8A5D),
+        borderColor3: Color(0xffF27C6C),
+      )
     ]);
 
 @immutable

@@ -134,9 +134,10 @@ class _WordleRowState extends ConsumerState<WordleRow> {
               (entry) => Column(
                 children: [
                   LetterBox(data: entry.value, onAccepted: updateMatchCount),
-                  const SizedBox(
-                    height: 20,
-                  ),
+                  if (wordCount != widget.word.length)
+                    const SizedBox(
+                      height: 20,
+                    ),
                   EmptyLetterBox(
                     dataToAccept: widget.word[entry.key],
                   )

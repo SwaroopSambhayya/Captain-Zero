@@ -8,10 +8,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   final IconData? iconData;
 
+  final Function() onActionPress;
+
   const CustomAppBar(
       {super.key,
       this.iconData,
       required this.leadingText,
+      required this.onActionPress,
       required this.title});
 
   @override
@@ -26,23 +29,28 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: 80,
       backgroundColor: colors.brandColor5,
       actions: [
-        Container(
-          margin: const EdgeInsets.only(right: 10),
-          child: Stack(
-            children: [
-              Positioned(
-                left: 2.2,
-                top: 2.2,
-                child: Icon(
-                  Icons.circle,
-                  color: colors.brandColor2,
+        GestureDetector(
+          onTap: onActionPress,
+          child: Container(
+            margin: const EdgeInsets.only(right: 10),
+            padding: const EdgeInsets.all(10),
+            decoration: const BoxDecoration(shape: BoxShape.circle),
+            child: Stack(
+              children: [
+                Positioned(
+                  left: 2.2,
+                  top: 2.2,
+                  child: Icon(
+                    Icons.circle,
+                    color: colors.brandColor2,
+                  ),
                 ),
-              ),
-              Icon(
-                iconData,
-                color: colors.brandColor1,
-              ),
-            ],
+                Icon(
+                  iconData,
+                  color: colors.brandColor1,
+                ),
+              ],
+            ),
           ),
         )
       ],
