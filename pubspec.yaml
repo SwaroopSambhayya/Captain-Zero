@@ -31,6 +31,10 @@ dependencies:
   animated_text_kit: ^4.2.2
   cupertino_icons: ^1.0.2
   dotted_border: ^2.1.0
+  equatable: ^2.0.5
+  flame: ^1.14.0
+  flame_noise: ^0.1.1+12
+  flame_rive: ^1.9.11
   flutter:
     sdk: flutter
   flutter_animate: ^4.4.0
@@ -39,7 +43,6 @@ dependencies:
   lottie: ^3.0.0
   neopop: ^1.0.2
   rive: ^0.12.4
-  flame: ^1.14.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -58,7 +61,12 @@ flutter:
   assets:
     - lib/shared/assets/
     - lib/shared/assets/images/
+    - assets/images/flame/
+    - assets/rive/
+    - assets/images/snow/
+    - assets/images/sparkle/
     - assets/images/bottle.png
+    - assets/images/two-way-arrow.png
     - assets/images/plastic.png
     - assets/images/bin.png
     - assets/images/tin.png
