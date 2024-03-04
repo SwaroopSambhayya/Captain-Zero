@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:captain_zero/features/level3/components/orb.dart';
 import 'package:captain_zero/features/level3/components/save_the_earth.dart';
+import 'package:captain_zero/features/level3/components/shield.dart';
 import 'package:captain_zero/features/level3/const.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
@@ -19,6 +21,8 @@ class Earth extends PositionComponent
   double get radius => size.x / 2;
   late SMITrigger uvcTrigger;
   late SMITrigger uvbTrigger;
+  late Shield uvcShield;
+  late Shield uvbShield;
   @override
   FutureOr<void> onLoad() async {
     super.onLoad();
@@ -46,6 +50,19 @@ class Earth extends PositionComponent
           anchor: Anchor.center,
           position: size / 2),
     );
+    add(
+      uvcShield = Shield(type: OrbType.uvc),
+    );
+    add(
+      uvbShield = Shield(type: OrbType.uvb),
+    );
+  }
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+    const rotationSpeed = 0;
+    uvbShield.angle = uvcShield.angle - pi;
   }
 
   @override
@@ -53,7 +70,6 @@ class Earth extends PositionComponent
     super.onCollision(intersectionPoints, other);
     if (other is Orb) {
       game.onOrbHit(other.type);
-
       switch (other.type) {
         case TemperatureType.hot:
           uvcTrigger.fire();

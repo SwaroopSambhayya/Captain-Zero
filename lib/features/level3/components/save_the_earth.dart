@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:captain_zero/features/level3/components/health_bar.dart';
 import 'package:captain_zero/features/level3/components/orb.dart';
 import 'package:captain_zero/features/level3/components/player.dart';
 import 'package:captain_zero/features/level3/const.dart';
@@ -22,8 +23,10 @@ class SaveTheEarth extends FlameGame<MyWorld>
             height: 600,
           ),
         );
+  late HealthBar healthBar;
+
   @override
-  void onLoad() {
+  void onLoad() async {
     Flame.images.loadAll(
       [
         ...List.generate(8, (index) => 'flame/flame${index + 1}.png'),
@@ -32,25 +35,28 @@ class SaveTheEarth extends FlameGame<MyWorld>
         'two-way-arrow.png'
       ],
     );
+    await add(
+      healthBar = HealthBar(),
+    );
   }
 
   Random rnd = Random();
 
-  @override
-  void update(double dt) {
-    //print(dt);
-    super.update(dt);
-  }
+  // @override
+  // void update(double dt) {
+  //   //print(dt);
+  //   super.update(dt);
+  // }
 
-  @override
-  void render(Canvas canvas) {
-    //canvas.drawImage(AssetImage(assetName), offset, paint)
-    //print('rendering canvas');
-    super.render(canvas);
-  }
+  // @override
+  // void render(Canvas canvas) {
+  //   //canvas.drawImage(AssetImage(assetName), offset, paint)
+  //   //print('rendering canvas');
+  //   super.render(canvas);
+  // }
 
-  void onOrbHit(TemperatureType type) {
-    camera.viewfinder.add(
+  void onOrbHit(TemperatureType type) async {
+    await camera.viewfinder.add(
       MoveEffect.by(
         Vector2(8, 8),
         PerlinNoiseEffectController(
@@ -59,6 +65,11 @@ class SaveTheEarth extends FlameGame<MyWorld>
         ),
       ),
     );
+
+    // if (healthBar.healthBarValue.value == 0) {
+    //   pauseEngine();
+    // }
+    // healthBar.healthBarValue.change(healthBar.healthBarValue.value - 10.0);
   }
 }
 

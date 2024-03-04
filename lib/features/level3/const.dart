@@ -38,3 +38,16 @@ enum TemperatureType {
         TemperatureType.cold => Level3Constants.coldColors,
       };
 }
+
+enum OrbType {
+  uvc,
+  uvb;
+
+  bool get isUvc => this == OrbType.uvc;
+
+  bool get isUvb => this == OrbType.uvb;
+
+  List<Color> get colors => Level3Constants.coldColors;
+
+  Color get baseColor => colors.first;
+}
