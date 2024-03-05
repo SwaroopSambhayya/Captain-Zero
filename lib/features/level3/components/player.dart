@@ -5,12 +5,14 @@ import 'package:captain_zero/features/level3/components/orb.dart';
 import 'package:captain_zero/features/level3/components/save_the_earth.dart';
 import 'package:captain_zero/features/level3/components/shield.dart';
 import 'package:captain_zero/features/level3/const.dart';
+import 'package:captain_zero/features/level3/providers/game_state_provider.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_rive/flame_rive.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
 
 class Earth extends PositionComponent
-    with HasGameRef<SaveTheEarth>, CollisionCallbacks {
+    with HasGameRef<SaveTheEarth>, CollisionCallbacks, RiverpodComponentMixin {
   Earth({
     double size = 100,
   }) : super(
@@ -51,17 +53,21 @@ class Earth extends PositionComponent
           position: size / 2),
     );
     add(
-      uvcShield = Shield(type: OrbType.uvc),
+      uvcShield = Shield(type: RayType.uvc),
     );
     add(
-      uvbShield = Shield(type: OrbType.uvb),
+      uvbShield = Shield(type: RayType.uvb),
     );
   }
 
   @override
   void update(double dt) {
     super.update(dt);
-    const rotationSpeed = 0;
+
+    final rotationSpeed = ref.read(level3State).shieldAngleRotationSpeed;
+    if (rotationSpeed != 0) {
+      uvcShield.angle += rotationSpeed! * dt;
+    }
     uvbShield.angle = uvcShield.angle - pi;
   }
 
@@ -71,10 +77,10 @@ class Earth extends PositionComponent
     if (other is Orb) {
       game.onOrbHit(other.type);
       switch (other.type) {
-        case TemperatureType.hot:
+        case RayType.uvc:
           uvcTrigger.fire();
           break;
-        case TemperatureType.cold:
+        case RayType.uvb:
           uvbTrigger.fire();
           break;
       }

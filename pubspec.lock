@@ -133,10 +133,10 @@ packages:
     dependency: "direct main"
     description:
       name: flame
-      sha256: "2a2352741500ce47823dcf212f06b23e9bdb622454eab90244ee6da58e23b488"
+      sha256: bb42a35fa5dabdea535daebe5b020e21a2fce8192b67b7e55cd30fed86d29f69
       url: "https://pub.dev"
     source: hosted
-    version: "1.15.0"
+    version: "1.16.0"
   flame_noise:
     dependency: "direct main"
     description:
@@ -153,6 +153,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.11"
+  flame_riverpod:
+    dependency: "direct main"
+    description:
+      name: flame_riverpod
+      sha256: e02a69a7b84b5111d8d869a4500b8bbb8c0c463cdcee571754a56238f57310d9
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.3.0"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -479,4 +487,4 @@ packages:
     version: "0.3.0"
 sdks:
   dart: ">=3.2.0 <4.0.0"
-  flutter: ">=3.16.0"
+  flutter: ">=3.19.0"

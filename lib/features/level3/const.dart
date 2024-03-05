@@ -11,43 +11,36 @@ class Level3Constants {
         orbsMoveSpeedPeak,
         0.5,
       );
-  static const hotColors = [
+  static const uvcColors = [
     Color(0xFFFF9362),
     Color(0xFFFF5900),
     Color(0xFFFF2F00),
   ];
 
-  static const coldColors = [
-    Color(0xFFB4E6FF),
-    Color(0xFF00AFFF),
-    Color(0xFF008BFF),
+  static final uvbColors = [
+    Colors.deepPurple.shade300,
+    Colors.deepPurpleAccent,
+    Colors.deepPurple,
   ];
 }
 
-enum TemperatureType {
-  hot,
-  cold;
-
-  Color get baseColor => switch (this) {
-        TemperatureType.hot => Level3Constants.hotColors.first,
-        TemperatureType.cold => Level3Constants.coldColors.first,
-      };
-
-  List<Color> get colors => switch (this) {
-        TemperatureType.hot => Level3Constants.hotColors,
-        TemperatureType.cold => Level3Constants.coldColors,
-      };
-}
-
-enum OrbType {
+enum RayType {
   uvc,
   uvb;
 
-  bool get isUvc => this == OrbType.uvc;
+  Color get baseColor => switch (this) {
+        RayType.uvc => Level3Constants.uvcColors.first,
+        RayType.uvb => Level3Constants.uvbColors.first,
+      };
 
-  bool get isUvb => this == OrbType.uvb;
+  List<Color> get colors => switch (this) {
+        RayType.uvc => Level3Constants.uvcColors,
+        RayType.uvb => Level3Constants.uvbColors,
+      };
+}
 
-  List<Color> get colors => Level3Constants.coldColors;
-
-  Color get baseColor => colors.first;
+enum Level3Game {
+  playing,
+  paused,
+  gameOver,
 }

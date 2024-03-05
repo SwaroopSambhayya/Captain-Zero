@@ -1,7 +1,5 @@
 import 'dart:math';
 
-import 'package:captain_zero/features/level3/components/moving_components.dart';
-import 'package:captain_zero/features/level3/components/orb.dart';
 import 'package:captain_zero/features/level3/components/player.dart';
 import 'package:captain_zero/features/level3/components/save_the_earth.dart';
 import 'package:captain_zero/features/level3/const.dart';
@@ -10,6 +8,8 @@ import 'package:flame/components.dart';
 import 'package:flame/extensions.dart';
 import 'package:flame/particles.dart';
 import 'package:flutter/material.dart';
+
+import 'orb.dart';
 
 class Shield extends PositionComponent
     with
@@ -27,14 +27,15 @@ class Shield extends PositionComponent
           anchor: Anchor.center,
         );
 
-  final OrbType type;
+  final RayType type;
   final double shieldWidth;
   final double shieldSweep;
   final double offset;
 
   late Timer _particleTimer;
   late List<Sprite> _flameSprites;
-  late List<Sprite> _smallSparkleSprites;
+  late List<Sprite> _sparkleSprites;
+  late List<Sprite> _snowflakeSprites;
 
   late Color shieldLineColor;
   late Color shieldTargetColor;
@@ -46,17 +47,6 @@ class Shield extends PositionComponent
   @override
   Future<void> onLoad() async {
     super.onLoad();
-    _smallSparkleSprites = switch (type) {
-      OrbType.uvc => [
-          await Sprite.load('sparkle/sparkle1.png'),
-          await Sprite.load('sparkle/sparkle2.png'),
-        ],
-      OrbType.uvb => [
-          await Sprite.load('snow/snowflake1.png'),
-          await Sprite.load('snow/snowflake2.png'),
-        ],
-    };
-
     shieldLineColor = type.baseColor.withOpacity(0.0);
     shieldTargetColor = type.baseColor.withOpacity(0.8);
     size = parent.size + Vector2.all(shieldWidth * 2) + Vector2.all(offset * 2);
@@ -77,6 +67,16 @@ class Shield extends PositionComponent
     _flameSprites = [];
     for (int i = 1; i <= 8; i++) {
       _flameSprites.add(await Sprite.load('flame/flame$i.png'));
+    }
+
+    _sparkleSprites = [];
+    for (int i = 1; i <= 2; i++) {
+      _sparkleSprites.add(await Sprite.load('sparkle/sparkle$i.png'));
+    }
+
+    _snowflakeSprites = [];
+    for (int i = 1; i <= 2; i++) {
+      _snowflakeSprites.add(await Sprite.load('snow/snowflake$i.png'));
     }
 
     _addParticles();
@@ -186,7 +186,10 @@ class Shield extends PositionComponent
           ),
         ));
 
-        final extraParticle = _smallSparkleSprites.random();
+        final extraParticle = switch (type) {
+          RayType.uvb => _snowflakeSprites.random(),
+          RayType.uvc => _sparkleSprites.random(),
+        };
         add(ParticleSystemComponent(
           position: localPos,
           anchor: Anchor.center,
@@ -255,17 +258,9 @@ class Shield extends PositionComponent
   void onCollisionStart(
       Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollisionStart(intersectionPoints, other);
-
     if (other is Orb) {
-      print(other.type);
-      switch (other) {
-        case UvcOrb():
-        case UvbOrb():
-          final orb = other as MovingOrb;
-          if ((orb.type.isUvc && type.isUvc) ||
-              (orb.type.isUvb && type.isUvb)) {
-            other.disjoint();
-          }
+      if (other.type == type) {
+        other.disjoint();
       }
     }
   }

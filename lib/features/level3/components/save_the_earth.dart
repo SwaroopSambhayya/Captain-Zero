@@ -3,8 +3,13 @@ import 'dart:math';
 
 import 'package:captain_zero/features/level3/components/health_bar.dart';
 import 'package:captain_zero/features/level3/components/orb.dart';
+import 'package:captain_zero/features/level3/components/play_pause.dart';
 import 'package:captain_zero/features/level3/components/player.dart';
+import 'package:captain_zero/features/level3/components/timer.dart';
 import 'package:captain_zero/features/level3/const.dart';
+import 'package:captain_zero/features/level3/effects/camera_zoom_effect.dart';
+import 'package:captain_zero/features/level3/effects/game_over_effects.dart';
+import 'package:captain_zero/features/level3/providers/game_state_provider.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
@@ -12,10 +17,11 @@ import 'package:flame/extensions.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flame_noise/flame_noise.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
 
 class SaveTheEarth extends FlameGame<MyWorld>
-    with HasCollisionDetection, KeyboardEvents {
-  SaveTheEarth()
+    with HasCollisionDetection, KeyboardEvents, RiverpodGameMixin {
+  SaveTheEarth({required this.screenSize})
       : super(
           world: MyWorld(),
           camera: CameraComponent.withFixedResolution(
@@ -23,7 +29,9 @@ class SaveTheEarth extends FlameGame<MyWorld>
             height: 600,
           ),
         );
+  final Size screenSize;
   late HealthBar healthBar;
+  late GameTimer gameTimer;
 
   @override
   void onLoad() async {
@@ -35,18 +43,17 @@ class SaveTheEarth extends FlameGame<MyWorld>
         'two-way-arrow.png'
       ],
     );
+
     await add(
       healthBar = HealthBar(),
     );
+    await add(
+      PlayPause(size: 60, position: Vector2(screenSize.width - 130, 20)),
+    );
+    await add(gameTimer = GameTimer());
   }
 
   Random rnd = Random();
-
-  // @override
-  // void update(double dt) {
-  //   //print(dt);
-  //   super.update(dt);
-  // }
 
   // @override
   // void render(Canvas canvas) {
@@ -55,7 +62,7 @@ class SaveTheEarth extends FlameGame<MyWorld>
   //   super.render(canvas);
   // }
 
-  void onOrbHit(TemperatureType type) async {
+  void onOrbHit(RayType type) async {
     await camera.viewfinder.add(
       MoveEffect.by(
         Vector2(8, 8),
@@ -65,22 +72,28 @@ class SaveTheEarth extends FlameGame<MyWorld>
         ),
       ),
     );
-
-    // if (healthBar.healthBarValue.value == 0) {
-    //   pauseEngine();
-    // }
-    // healthBar.healthBarValue.change(healthBar.healthBarValue.value - 10.0);
+    healthBar.healthBarValue.change(healthBar.healthBarValue.value - 10.0);
   }
 }
 
-class MyWorld extends World with HasGameRef<SaveTheEarth> {
+class MyWorld extends World
+    with HasGameRef<SaveTheEarth>, TapCallbacks, RiverpodComponentMixin {
   double lastSpawnOrbTimer = 0.0;
   late Earth player;
+
   @override
   Future<void> onLoad() async {
+    super.onLoad();
     await add(
       player = Earth(),
     );
+
+    add(CameraZoomEffect(
+      controller: EffectController(
+        duration: 1.0,
+      ),
+      zoomTo: 1.0,
+    ));
   }
 
   @override
@@ -89,6 +102,12 @@ class MyWorld extends World with HasGameRef<SaveTheEarth> {
     if (lastSpawnOrbTimer >= 2.5) {
       lastSpawnOrbTimer = 0.0;
       spawnOrb();
+    }
+    if (game.healthBar.healthBarValue.value == 0) {
+      Future.delayed(const Duration(milliseconds: 500), () {
+        ref.read(level3State.notifier).changeGameState(Level3Game.gameOver);
+        game.pauseEngine();
+      });
     }
     super.update(dt);
   }
@@ -100,7 +119,7 @@ class MyWorld extends World with HasGameRef<SaveTheEarth> {
     final moveSpeed = Level3Constants.spawnOrbsMoveSpeedRange.random();
     add(
       Orb(
-        type: TemperatureType.values.random(),
+        type: RayType.values.random(),
         speed: moveSpeed,
         size: 16 + Random().nextDouble() * 2,
         target: game.world.player,
