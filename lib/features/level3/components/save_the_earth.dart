@@ -74,7 +74,7 @@ class SaveTheEarth extends FlameGame<MyWorld>
         ),
       ),
     );
-    healthBar.healthBarValue.change(healthBar.healthBarValue.value - 50.0);
+    healthBar.healthBarValue.change(healthBar.healthBarValue.value - 10.0);
   }
 }
 
