@@ -1,22 +1,18 @@
 import 'dart:async';
 import 'package:captain_zero/features/level3/components/save_the_earth.dart';
+import 'package:captain_zero/features/level3/providers/audio_provider.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/input.dart';
 import 'package:flame_rive/flame_rive.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
 
-class PlayPause extends PositionComponent with HasGameRef<SaveTheEarth> {
+class PlayPause extends PositionComponent
+    with HasGameRef<SaveTheEarth>, RiverpodComponentMixin {
   PlayPause({required double size, required super.position})
       : super(size: Vector2.all(size), priority: 2);
 
   late SMIBool play;
-
-  @override
-  void update(double dt) {
-    // TODO: implement update
-
-    super.update(dt);
-  }
 
   @override
   Future<void> onLoad() async {
@@ -36,8 +32,10 @@ class PlayPause extends PositionComponent with HasGameRef<SaveTheEarth> {
           Future.delayed(const Duration(milliseconds: 800), () {
             if (game.paused) {
               game.resumeEngine();
+              ref.read(audioProvider).resumeBackgroundMusic();
             } else {
               game.pauseEngine();
+              ref.read(audioProvider).pauseBackgroundMusic();
             }
           });
         },

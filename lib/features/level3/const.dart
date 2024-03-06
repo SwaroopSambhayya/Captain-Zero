@@ -22,6 +22,7 @@ class Level3Constants {
     Colors.deepPurpleAccent,
     Colors.deepPurple,
   ];
+  static const double bgVolume = 0.2;
 }
 
 enum RayType {

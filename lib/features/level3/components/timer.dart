@@ -11,7 +11,7 @@ class GameTimer extends PositionComponent with HasGameRef<SaveTheEarth> {
     style: const TextStyle(
         color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
   );
-  int totalMinutes = 180;
+  int totalMinutes = 120;
   @override
   FutureOr<void> onLoad() {
     gameTimer = Timer(1, onTick: () {

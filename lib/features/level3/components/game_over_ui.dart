@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:captain_zero/features/level3/const.dart';
+import 'package:captain_zero/features/level3/providers/audio_provider.dart';
 import 'package:captain_zero/features/level3/providers/game_state_provider.dart';
 import 'package:captain_zero/shared/components/grand_button.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class _GameOverUIState extends ConsumerState<GameOverUI>
       vsync: this,
       duration: const Duration(milliseconds: 300),
     );
+    ref.read(audioProvider).playGameOverMusic();
     _gameOverAnimationController.addListener(() {
       setState(() {});
     });
@@ -82,16 +84,13 @@ class _GameOverUIState extends ConsumerState<GameOverUI>
               ),
             ),
             const SizedBox(height: 40),
-            SizedBox(
-              width: 240,
-              child: GrandButton(
-                text: 'TRY AGAIN!',
-                onPress: () {
-                  ref
-                      .read(level3State.notifier)
-                      .changeGameState(Level3Game.playing);
-                },
-              ),
+            GrandButton(
+              text: 'TRY AGAIN!',
+              onPress: () {
+                ref
+                    .read(level3State.notifier)
+                    .changeGameState(Level3Game.playing);
+              },
             ),
           ],
         ),

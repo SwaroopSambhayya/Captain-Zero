@@ -8,6 +8,7 @@ import 'package:captain_zero/features/level3/components/player.dart';
 import 'package:captain_zero/features/level3/components/timer.dart';
 import 'package:captain_zero/features/level3/const.dart';
 import 'package:captain_zero/features/level3/effects/camera_zoom_effect.dart';
+import 'package:captain_zero/features/level3/providers/audio_provider.dart';
 import 'package:captain_zero/features/level3/providers/game_state_provider.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
@@ -73,7 +74,7 @@ class SaveTheEarth extends FlameGame<MyWorld>
         ),
       ),
     );
-    healthBar.healthBarValue.change(healthBar.healthBarValue.value - 10.0);
+    healthBar.healthBarValue.change(healthBar.healthBarValue.value - 50.0);
   }
 }
 
@@ -95,10 +96,12 @@ class MyWorld extends World
       ),
       zoomTo: 1.0,
     ));
+    ref.read(audioProvider).playBackgroundMusic();
   }
 
   @override
   void update(double dt) {
+    super.update(dt);
     lastSpawnOrbTimer += dt;
     if (lastSpawnOrbTimer >= 2.5) {
       lastSpawnOrbTimer = 0.0;
@@ -110,7 +113,6 @@ class MyWorld extends World
         game.pauseEngine();
       });
     }
-    super.update(dt);
   }
 
   void spawnOrb() {
