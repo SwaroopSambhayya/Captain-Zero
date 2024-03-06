@@ -47,13 +47,15 @@ class LevelCompleted extends StatelessWidget {
               ),
             ),
             Visibility(
-              visible: level < 3,
+              visible: level <= 3,
               child: Flexible(
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: GrandButton(
                     onPress: () {
-                      context.go('/level${level + 1}');
+                      if (level < 3) {
+                        context.go('/level${level + 1}');
+                      }
                     },
                     text: "Continue Journey!",
                   ),

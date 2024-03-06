@@ -42,7 +42,9 @@ class _Level3State extends ConsumerState<Level3> {
         children: [
           RiverpodAwareGameWidget(
             key: gameWidgetKey,
-            game: SaveTheEarth(screenSize: MediaQuery.of(context).size),
+            game: SaveTheEarth(
+                screenSize: MediaQuery.of(context).size,
+                routerContext: context),
           ),
           RotationControls(
               onLeftDown: levelState.onLeftTapDown,

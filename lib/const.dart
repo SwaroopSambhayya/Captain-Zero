@@ -4,7 +4,7 @@ String level2Description =
     "Did you know jumbled word game helps you in Vocabulary building, Improving cognitive skills and challenges brain to think creatively!";
 
 String level3Description =
-    " Save the earth from harmful and hazardous UV rays! with help of ozone shield";
+    " Save the earth from harmful and hazardous UV rays! with help of ozone shields";
 
 String scoopTrashDescription =
     "Clean up the planet in this engaging game where you control a recycle bin catching falling trash to save the environment!";

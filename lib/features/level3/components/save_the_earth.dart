@@ -8,7 +8,6 @@ import 'package:captain_zero/features/level3/components/player.dart';
 import 'package:captain_zero/features/level3/components/timer.dart';
 import 'package:captain_zero/features/level3/const.dart';
 import 'package:captain_zero/features/level3/effects/camera_zoom_effect.dart';
-import 'package:captain_zero/features/level3/effects/game_over_effects.dart';
 import 'package:captain_zero/features/level3/providers/game_state_provider.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
@@ -18,10 +17,11 @@ import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flame_noise/flame_noise.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
+import 'package:flutter/material.dart';
 
 class SaveTheEarth extends FlameGame<MyWorld>
     with HasCollisionDetection, KeyboardEvents, RiverpodGameMixin {
-  SaveTheEarth({required this.screenSize})
+  SaveTheEarth({required this.screenSize, required this.routerContext})
       : super(
           world: MyWorld(),
           camera: CameraComponent.withFixedResolution(
@@ -30,6 +30,7 @@ class SaveTheEarth extends FlameGame<MyWorld>
           ),
         );
   final Size screenSize;
+  final BuildContext routerContext;
   late HealthBar healthBar;
   late GameTimer gameTimer;
 

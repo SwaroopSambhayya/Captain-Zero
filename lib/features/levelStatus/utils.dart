@@ -9,7 +9,7 @@ String getDescriptionBasedOnLevel(int level) {
       return level2Description;
 
     case 3:
-      return "";
+      return level3Description;
 
     default:
       return "";
