@@ -14,7 +14,7 @@ class GameTimer extends PositionComponent
     style: const TextStyle(
         color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
   );
-  int totalMinutes = 10;
+  int totalMinutes = 90;
   @override
   FutureOr<void> onLoad() {
     gameTimer = Timer(1, onTick: () {
