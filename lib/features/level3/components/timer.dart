@@ -14,7 +14,7 @@ class GameTimer extends PositionComponent
     style: const TextStyle(
         color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
   );
-  int totalMinutes = 120;
+  int totalMinutes = 10;
   @override
   FutureOr<void> onLoad() {
     gameTimer = Timer(1, onTick: () {
@@ -31,9 +31,8 @@ class GameTimer extends PositionComponent
     if (totalMinutes == 0) {
       gameTimer.stop();
       game.pauseEngine();
-      game.routerContext.go('/levelComplete/3');
       ref.read(audioProvider).stopMusic();
-      ref.read(audioProvider).playVictorySound();
+      game.routerContext.go('/levelComplete/3');
     }
   }
 

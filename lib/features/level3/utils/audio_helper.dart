@@ -57,7 +57,7 @@ class AudioHelper {
   }
 
   void playVictorySound() async {
-    if (_audioEnabled) {
+    if (!_audioEnabled) {
       return;
     }
     FlameAudio.play(
