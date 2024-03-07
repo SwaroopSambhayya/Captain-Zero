@@ -18,6 +18,8 @@ class GrandButton extends StatelessWidget {
         plunkColor: Colors.grey.shade900,
         shadowColor: colors.brandColor2!,
         showShimmer: true,
+        border:
+            Border.all(color: colors.brandColor5!.withOpacity(0.5), width: 0.5),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(

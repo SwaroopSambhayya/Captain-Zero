@@ -7,6 +7,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
 
   final IconData? iconData;
+  final Color? backgroundColor;
 
   final Function() onActionPress;
 
@@ -15,6 +16,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.iconData,
       required this.leadingText,
       required this.onActionPress,
+      this.backgroundColor,
       required this.title});
 
   @override
@@ -27,7 +29,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     final BrandColors colors = Theme.of(context).extension<BrandColors>()!;
     return AppBar(
       leadingWidth: 80,
-      backgroundColor: colors.brandColor5,
+      backgroundColor: backgroundColor ?? colors.brandColor5,
       actions: [
         GestureDetector(
           onTap: onActionPress,

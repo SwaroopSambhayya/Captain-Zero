@@ -33,6 +33,12 @@ HelpDialogDetails getHelpDetailsonLevel(int level) {
         description: jumbledWordDescription,
         hintMessage: level2HintMessage,
       );
+    case 3:
+      return HelpDialogDetails(
+        title: game3,
+        description: level3Description,
+        hintMessage: level2HintMessage,
+      );
     default:
       return const HelpDialogDetails(
           title: "", description: "", hintMessage: "");
