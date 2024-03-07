@@ -8,7 +8,8 @@ import 'package:go_router/go_router.dart';
 final router = GoRouter(
   routes: [
     GoRoute(
-        path: '/', builder: (context, state) => const Level3() //SplashScreen(),
+        path: '/',
+        builder: (context, state) => const SplashScreen() //SplashScreen(),
         ),
     GoRoute(
       path: '/level1',
