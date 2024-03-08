@@ -87,7 +87,7 @@ class _GenericPassState extends State<GenericPass> {
                       Expanded(
                         flex: 2,
                         child: Padding(
-                          padding: const EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(16),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -144,12 +144,12 @@ class _GenericPassState extends State<GenericPass> {
                                       color: Colors.white,
                                     ),
                                     alignment: Alignment.center,
-                                    height: width / 2.75,
-                                    width: width / 2.75,
+                                    height: width / 2.5,
+                                    width: width / 2.5,
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.all(6.0),
+                                  padding: const EdgeInsets.all(14.0),
                                   child: Center(
                                     child: SizedBox(
                                       height: width / 3,
@@ -163,7 +163,7 @@ class _GenericPassState extends State<GenericPass> {
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 18),
+                            const SizedBox(height: 12),
                             const Center(
                               child: Text(
                                 'Certificate Credentials',

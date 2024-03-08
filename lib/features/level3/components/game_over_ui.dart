@@ -92,6 +92,14 @@ class _GameOverUIState extends ConsumerState<GameOverUI>
                     .changeGameState(Level3Game.playing);
               },
             ),
+            GrandButton(
+              text: 'TRY AGAIN!',
+              onPress: () {
+                ref
+                    .read(level3State.notifier)
+                    .changeGameState(Level3Game.playing);
+              },
+            ),
           ],
         ),
       ],

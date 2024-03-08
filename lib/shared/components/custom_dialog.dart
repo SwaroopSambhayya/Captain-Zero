@@ -5,9 +5,13 @@ import 'package:flutter/material.dart';
 class CustomDialog extends StatelessWidget {
   final String dialogAsset;
   final HelpDialogDetails details;
+  final Function() onPressed;
 
   const CustomDialog(
-      {super.key, required this.dialogAsset, required this.details});
+      {super.key,
+      required this.dialogAsset,
+      required this.details,
+      required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +48,7 @@ class CustomDialog extends StatelessWidget {
               children: [
                 IconButton(
                   iconSize: 24,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
+                  onPressed: onPressed,
                   icon: const Icon(
                     Icons.close,
                     size: 21,

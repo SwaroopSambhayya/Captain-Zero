@@ -29,6 +29,10 @@ final router = GoRouter(
       builder: (context, state) => LevelCompleted(
         level: int.parse(state.pathParameters['level']!),
       ),
-    )
+    ),
+    GoRoute(
+      path: '/genericPass',
+      builder: (context, state) => const GenericPass(),
+    ),
   ],
 );

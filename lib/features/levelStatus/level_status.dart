@@ -70,6 +70,8 @@ class _LevelCompletedState extends ConsumerState<LevelCompleted> {
                     onPress: () {
                       if (widget.level < 3) {
                         context.go('/level${widget.level + 1}');
+                      } else {
+                        context.go('/genericPass');
                       }
                     },
                     text: widget.level == 3
