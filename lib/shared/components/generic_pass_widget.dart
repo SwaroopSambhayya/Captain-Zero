@@ -109,7 +109,7 @@ class _GenericPassState extends State<GenericPass> {
                                   )
                                 ],
                               ),
-                              const SizedBox(height: 18),
+                              const SizedBox(height: 12),
                               const Text(
                                 'Champion',
                                 style: TextStyle(
@@ -219,8 +219,9 @@ class _GenericPassState extends State<GenericPass> {
     progressDialog.show(
       max: 100,
       msg: 'Processing request ...',
+      msgColor: Colors.white,
       progressBgColor: Colors.greenAccent,
-      backgroundColor: const Color(0xffF6A69B),
+      backgroundColor: Colors.black,
     );
     final body = {"name": userName, "objectSuffix": uuid};
     const url = 'https://wallet-service-1.onrender.com/createGenericPass';
