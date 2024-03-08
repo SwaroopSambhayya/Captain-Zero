@@ -9,7 +9,7 @@ final router = GoRouter(
   routes: [
     GoRoute(
         path: '/',
-        builder: (context, state) => const SplashScreen() //SplashScreen(),
+        builder: (context, state) => const OnboardingScreen() //SplashScreen(),
         ),
     GoRoute(
       path: '/level1',
