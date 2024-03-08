@@ -72,7 +72,9 @@ class _LevelCompletedState extends ConsumerState<LevelCompleted> {
                         context.go('/level${widget.level + 1}');
                       }
                     },
-                    text: "Continue Journey!",
+                    text: widget.level == 3
+                        ? "Collect My Badge!"
+                        : "Continue Journey!",
                   ),
                 ),
               ),

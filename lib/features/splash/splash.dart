@@ -44,10 +44,10 @@ class SplashScreen extends StatelessWidget {
                   child: AnimatedTextKit(
                     animatedTexts: [
                       TypewriterAnimatedText(
-                        "Captain Zero, begin your journey towards the planet sustainability",
-                        textStyle: Theme.of(context).textTheme.titleLarge,
-                        speed: const Duration(milliseconds: 100),
-                      ),
+                          "Captain Zero, begin your journey towards the planet sustainability",
+                          textStyle: Theme.of(context).textTheme.titleLarge,
+                          speed: const Duration(milliseconds: 100),
+                          textAlign: TextAlign.center),
                     ],
                     totalRepeatCount: 1,
                   ),
