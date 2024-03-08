@@ -2,8 +2,9 @@ import 'package:captain_zero/const.dart';
 import 'package:captain_zero/shared/components/custom_dialog.dart';
 import 'package:flutter/material.dart';
 
-showHelpDialog(BuildContext context, int level) {
-  showDialog(
+Future<bool> showHelpDialog(BuildContext context, int level) async {
+  return await showDialog(
+    barrierDismissible: false,
     context: context,
     builder: (context) {
       return Dialog(
@@ -13,6 +14,9 @@ showHelpDialog(BuildContext context, int level) {
         child: CustomDialog(
           dialogAsset: 'lib/shared/assets/images/Level$level.png',
           details: getHelpDetailsonLevel(level),
+          onPressed: () {
+            Navigator.pop(context, true);
+          },
         ),
       );
     },

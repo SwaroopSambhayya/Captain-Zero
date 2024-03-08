@@ -1,6 +1,7 @@
+// ignore_for_file: library_private_types_in_public_api
 import 'package:captain_zero/features/level2/components/wordle/wordle.dart';
 import 'package:captain_zero/features/level2/utils/help_dialog.dart';
-import 'package:captain_zero/shared/components/level_App_bar.dart';
+import 'package:captain_zero/shared/components/level_app_bar.dart';
 import 'package:captain_zero/shared/enums.dart';
 import 'package:captain_zero/shared/providers/game_state.dart';
 import 'package:captain_zero/shared/theme.dart';
@@ -8,11 +9,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class Level2 extends ConsumerWidget {
+class Level2 extends ConsumerStatefulWidget {
   const Level2({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  _Level2State createState() => _Level2State();
+}
+
+class _Level2State extends ConsumerState<Level2> {
+  bool _isDialogShown = false;
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await showHelpDialog(context, 2);
+      setState(() {
+        _isDialogShown = true;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final BrandColors colors = Theme.of(context).extension<BrandColors>()!;
     ref.listen(gameState, (prev, next) {
       if (next == GameState.level2Completed) {
@@ -28,27 +46,29 @@ class Level2 extends ConsumerWidget {
           showHelpDialog(context, 2);
         },
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10)
-                  .copyWith(bottom: 60)
-                  .copyWith(right: 15),
-              decoration: BoxDecoration(
-                color: colors.brandColor2,
-                boxShadow: [
-                  BoxShadow(
-                    color: colors.borderColor2!,
-                    offset: const Offset(5, 5),
+      body: _isDialogShown
+          ? Column(
+              children: [
+                Expanded(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 10)
+                        .copyWith(bottom: 60)
+                        .copyWith(right: 15),
+                    decoration: BoxDecoration(
+                      color: colors.brandColor2,
+                      boxShadow: [
+                        BoxShadow(
+                          color: colors.borderColor2!,
+                          offset: const Offset(5, 5),
+                        ),
+                      ],
+                    ),
+                    child: const Wordle(),
                   ),
-                ],
-              ),
-              child: const Wordle(),
-            ),
-          ),
-        ],
-      ),
+                ),
+              ],
+            )
+          : Container(),
     );
   }
 }

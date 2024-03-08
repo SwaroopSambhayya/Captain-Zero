@@ -17,6 +17,18 @@ class Level1 extends StatefulWidget {
 }
 
 class _Level1State extends State<Level1> {
+  bool _isDialogShown = false;
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await showHelpDialog(context, 1);
+      setState(() {
+        _isDialogShown = true;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,13 +40,17 @@ class _Level1State extends State<Level1> {
         },
         iconData: Icons.help,
       ),
-      body: GameWidget(
-        game: RecycleGame(
-          onGameEnd: () => context.go('/levelComplete/1'),
-        ),
-      ),
+      body: _isDialogShown
+          ? GameWidget(
+              game: RecycleGame(
+                onGameEnd: () => context.go('/levelComplete/1'),
+              ),
+            )
+          : Container(),
     );
   }
+
+  void showInfoDialog() {}
 }
 
 class RecycleGame extends FlameGame with PanDetector {
@@ -112,7 +128,6 @@ class RecycleGame extends FlameGame with PanDetector {
     trashSpawnTimer.update(dt);
     collectedText.text = "Collected: $trashCollected";
     missedText.text = "Missed: $trashMissed";
-    
   }
 
   @override

@@ -20,6 +20,19 @@ class Level3 extends ConsumerStatefulWidget {
 }
 
 class _Level3State extends ConsumerState<Level3> {
+  bool _isDialogShown = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await showHelpDialog(context, 3);
+      setState(() {
+        _isDialogShown = true;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final levelState = ref.read(level3State.notifier);
@@ -38,31 +51,33 @@ class _Level3State extends ConsumerState<Level3> {
             showHelpDialog(context, 3);
           },
           title: 'Save the earth'),
-      body: Stack(
-        children: [
-          RiverpodAwareGameWidget(
-            key: gameWidgetKey,
-            game: SaveTheEarth(
-                screenSize: MediaQuery.of(context).size,
-                routerContext: context),
-          ),
-          RotationControls(
-              onLeftDown: levelState.onLeftTapDown,
-              onLeftUp: levelState.onLeftTapUp,
-              onRightDown: levelState.onRightTapDown,
-              onRightUp: levelState.onRightTapUp),
-          Consumer(builder: (context, ref, child) {
-            final level3GameState = ref.watch(
-              level3State.select((value) => value.level3game),
-            );
-            if (level3GameState == Level3Game.gameOver) {
-              return const GameOverUI();
-            }
+      body: _isDialogShown
+          ? Stack(
+              children: [
+                RiverpodAwareGameWidget(
+                  key: gameWidgetKey,
+                  game: SaveTheEarth(
+                      screenSize: MediaQuery.of(context).size,
+                      routerContext: context),
+                ),
+                RotationControls(
+                    onLeftDown: levelState.onLeftTapDown,
+                    onLeftUp: levelState.onLeftTapUp,
+                    onRightDown: levelState.onRightTapDown,
+                    onRightUp: levelState.onRightTapUp),
+                Consumer(builder: (context, ref, child) {
+                  final level3GameState = ref.watch(
+                    level3State.select((value) => value.level3game),
+                  );
+                  if (level3GameState == Level3Game.gameOver) {
+                    return const GameOverUI();
+                  }
 
-            return const SizedBox();
-          }),
-        ],
-      ),
+                  return const SizedBox();
+                }),
+              ],
+            )
+          : Container(),
     );
   }
 }

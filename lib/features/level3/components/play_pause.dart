@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:captain_zero/features/level3/components/save_the_earth.dart';
 import 'package:captain_zero/features/level3/providers/audio_provider.dart';
 import 'package:flame/components.dart';
-import 'package:flame/events.dart';
 import 'package:flame/input.dart';
 import 'package:flame_rive/flame_rive.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
