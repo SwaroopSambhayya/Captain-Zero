@@ -6,6 +6,7 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 
@@ -78,6 +79,8 @@ class RecycleGame extends FlameGame with PanDetector {
   @override
   Future<void> onLoad() async {
     super.onLoad();
+    //music
+    FlameAudio.bgm.play('level1.mp3', volume: 0.2);
     // Create and add the recycle bin
     bin = RecycleBin(size);
     add(bin);
@@ -123,6 +126,7 @@ class RecycleGame extends FlameGame with PanDetector {
   void update(double dt) {
     super.update(dt);
     if (trashCollected >= 50) {
+      FlameAudio.bgm.stop();
       onGameEnd();
     }
     trashSpawnTimer.update(dt);

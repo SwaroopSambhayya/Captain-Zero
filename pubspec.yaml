@@ -102,6 +102,7 @@ flutter:
     - assets/images/earth.webp
     - assets/images/greenery.jpeg
     - assets/images/add_to_wallet.png
+    - assets/icon/captainzero.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

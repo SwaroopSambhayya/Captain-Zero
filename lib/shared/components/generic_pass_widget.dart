@@ -95,7 +95,7 @@ class _GenericPassState extends State<GenericPass> {
                                 children: [
                                   CircleAvatar(
                                     child: Image.asset(
-                                      'assets/images/earth.webp',
+                                      'assets/icon/captainzero.png',
                                     ),
                                   ),
                                   const SizedBox(width: 24),
