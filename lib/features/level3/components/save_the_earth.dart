@@ -57,13 +57,6 @@ class SaveTheEarth extends FlameGame<MyWorld>
 
   Random rnd = Random();
 
-  // @override
-  // void render(Canvas canvas) {
-  //   //canvas.drawImage(AssetImage(assetName), offset, paint)
-  //   //print('rendering canvas');
-  //   super.render(canvas);
-  // }
-
   void onOrbHit(RayType type) async {
     await camera.viewfinder.add(
       MoveEffect.by(

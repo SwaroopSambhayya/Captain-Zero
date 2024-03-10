@@ -35,12 +35,9 @@ class _LevelCompletedState extends ConsumerState<LevelCompleted> {
       body: SafeArea(
         child: Column(
           children: [
-            Align(
-              alignment: Alignment.topCenter,
-              child: Text(
-                "Congratulations!",
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
+            Text(
+              "Congratulations!",
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             Stack(
               alignment: Alignment.center,

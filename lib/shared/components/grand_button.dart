@@ -21,15 +21,17 @@ class GrandButton extends StatelessWidget {
         border:
             Border.all(color: colors.brandColor5!.withOpacity(0.5), width: 0.5),
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 70.0,
-          vertical: 15,
-        ),
-        child: Text(
-          text,
-          style:
-              TextStyle(color: colors.brandColor5, fontWeight: FontWeight.bold),
+      child: FittedBox(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 70.0,
+            vertical: 15,
+          ),
+          child: Text(
+            text,
+            style: TextStyle(
+                color: colors.brandColor5, fontWeight: FontWeight.bold),
+          ),
         ),
       ),
     );

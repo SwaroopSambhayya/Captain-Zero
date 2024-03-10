@@ -60,11 +60,12 @@ class CustomDialog extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: MediaQuery.of(context).size.height * 0.15,
+              top: 80,
               left: 0,
               right: 0,
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.7,
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.75,
+                padding: const EdgeInsets.only(bottom: 20),
                 child: ListView(
                   shrinkWrap: true,
                   children: [

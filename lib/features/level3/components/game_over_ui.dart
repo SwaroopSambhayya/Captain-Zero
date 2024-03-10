@@ -4,6 +4,7 @@ import 'package:captain_zero/features/level3/const.dart';
 import 'package:captain_zero/features/level3/providers/audio_provider.dart';
 import 'package:captain_zero/features/level3/providers/game_state_provider.dart';
 import 'package:captain_zero/shared/components/grand_button.dart';
+import 'package:captain_zero/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rive/rive.dart';
@@ -41,28 +42,14 @@ class _GameOverUIState extends ConsumerState<GameOverUI>
 
   @override
   Widget build(BuildContext context) {
+    final brandColors = Theme.of(context).extension<BrandColors>()!;
     return Stack(
       alignment: Alignment.center,
       children: [
-        BackdropFilter(
-          filter: ImageFilter.blur(
-            sigmaX: Tween<double>(begin: 0.0, end: 16.0).transform(
-              _gameOverAnimationController.value,
-            ),
-            sigmaY: Tween<double>(begin: 0.0, end: 16.0).transform(
-              _gameOverAnimationController.value,
-            ),
-          ),
-          child: Container(
+        Container(
             width: double.infinity,
             height: double.infinity,
-            color: Colors.black.withOpacity(
-              Tween<double>(begin: 0.0, end: 0.7).transform(
-                _gameOverAnimationController.value,
-              ),
-            ),
-          ),
-        ),
+            color: Colors.black.withOpacity(0.96)),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -71,7 +58,7 @@ class _GameOverUIState extends ConsumerState<GameOverUI>
               style: Theme.of(context)
                   .textTheme
                   .displayMedium!
-                  .copyWith(color: Theme.of(context).scaffoldBackgroundColor),
+                  .copyWith(color: brandColors.brandColor5),
             ),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 50),
