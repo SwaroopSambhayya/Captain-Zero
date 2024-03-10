@@ -42,6 +42,7 @@ class _GenericPassState extends State<GenericPass> {
     ProgressDialog progressDialog = ProgressDialog(context: context);
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(),
       body: Padding(
@@ -56,7 +57,7 @@ class _GenericPassState extends State<GenericPass> {
                     'Congrats!! You have earned this certificate',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 16),
                   TextFormField(
                     decoration: const InputDecoration(
                       labelText: 'Enter your name',
@@ -68,9 +69,6 @@ class _GenericPassState extends State<GenericPass> {
                   ),
                 ],
               ),
-            ),
-            const SizedBox(
-              height: 12,
             ),
             Expanded(
               flex: 4,
@@ -196,7 +194,7 @@ class _GenericPassState extends State<GenericPass> {
                   )),
             ),
             const SizedBox(
-              height: 24,
+              height: 16,
             ),
             Expanded(
               flex: 1,

@@ -77,7 +77,9 @@ class _Level3State extends ConsumerState<Level3> {
                 }),
               ],
             )
-          : Container(),
+          : Container(
+              color: Colors.white,
+            ),
     );
   }
 }

@@ -73,7 +73,7 @@ class RecycleGame extends FlameGame with PanDetector {
   void render(Canvas canvas) {
     canvas.drawRect(
       Rect.fromLTWH(0, 0, size.x, size.y),
-      Paint()..color = Colors.white,
+      Paint()..color = Colors.black,
     );
     super.render(canvas);
   }
@@ -94,14 +94,7 @@ class RecycleGame extends FlameGame with PanDetector {
     const textStyle = TextStyle(
       fontFamily: 'GillSans',
       fontSize: 24.0,
-      color: Colors.black,
-      shadows: [
-        Shadow(
-          blurRadius: 7,
-          color: Colors.black,
-          offset: Offset(3, 3),
-        ),
-      ],
+      color: Colors.white,
     );
 
     collectedText = TextComponent(
