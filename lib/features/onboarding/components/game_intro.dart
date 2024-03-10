@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:captain_zero/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';

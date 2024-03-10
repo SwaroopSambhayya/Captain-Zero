@@ -1,13 +1,10 @@
 import 'dart:math';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:captain_zero/shared/components/grand_button.dart';
 import 'package:captain_zero/shared/theme.dart';
 import 'package:flame_rive/flame_rive.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class CaptainZero extends StatelessWidget {
   const CaptainZero({super.key});

@@ -1,21 +1,23 @@
 String level1Description =
     "Great job! Not only did you sharpen your reflexes and decision-making skills, You helped the world be more sustainable by collecting these trash";
 String level2Description =
-    "Did you know jumbled word game helps you in Vocabulary building, Improving cognitive skills and challenges brain to think creatively!";
-
+    "Fantastic Work! By unraveling the jumbled words, you've deepened your understanding of crucial sustainability concepts. You're not just learning words; you're becoming a captain of Earth's future. Keep it up!";
 String level3Description =
-    " Save the earth from harmful and hazardous UV rays! with help of ozone shields";
+    "Brilliant defense!By protecting Earth with the ozone layer,you showcase how vital our actions are for the planet's future, the everyday choices we can make to preserve our environment. Keep shining,";
 
 String scoopTrashDescription =
-    "Clean up the planet in this engaging game where you control a recycle bin catching falling trash to save the environment!";
-
+    "The world is cluttered, and it's up to you to clean it up! In this level, various types of trash fall from the sky. Your job is to catch the debris. Every piece you catch brings us one step closer to a cleaner world.";
 String jumbledWordDescription =
-    "Jumbled word games, also known as word scrambles or anagrams, are popular word puzzles where the letters of a word are rearranged, and the player's task is to unscramble them to form the correct word.";
+    "Unscramble the puzzle of sustainability! Here, you're presented with jumbled letters forming words critical to our environment. Your task is to rearrange them into meaningful concepts of sustainability.";
+String saveEarthDescription =
+    'The Earth is under threat from harmful UV(B and C) rays, and its only protection is the ozone layer you control. Rotate the ozone shield around the planet to fend off incoming rays.';
 
 String level1HintMessage =
-    "Swipe to move the bin and catch trash. Advance to next level by collecting 50 pieces of falling trash!";
+    "Swipe your recycle bin left or right to catch the debris. Collect 50 pieces of trash to clear the clutter and complete the level.";
 String level2HintMessage =
-    "All the words here are built to bring awareness regarding sustainability";
+    "Decipher all 9 words to shine a light on important ecological terms and practices";
+String level3HintMessage =
+    'Protect our home for 90 seconds to ensure its safety and demonstrate the importance of our planets delicate shield.';
 String game2 = "Jumbled Words";
-String game1 = "Scoop Trash";
+String game1 = "Trash Dash";
 String game3 = "Save The Earth";

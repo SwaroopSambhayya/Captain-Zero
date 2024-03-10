@@ -1,9 +1,8 @@
-
 import 'package:captain_zero/features/level1/level1.dart';
 import 'package:flame/components.dart';
 
 class RecycleBin extends SpriteComponent with HasGameRef<RecycleGame> {
-  double speed = 300;
+  double speed = 50;
   final Vector2 gameSize;
 
   RecycleBin(this.gameSize) {

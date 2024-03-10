@@ -1,4 +1,4 @@
-import 'package:captain_zero/features/level2/utils/help_dialog.dart';
+import 'package:captain_zero/shared/components/help_dialog.dart';
 import 'package:captain_zero/features/level3/components/game_over_ui.dart';
 import 'package:captain_zero/features/level3/components/rotating_controls.dart';
 import 'package:captain_zero/features/level3/components/save_the_earth.dart';
@@ -77,7 +77,9 @@ class _Level3State extends ConsumerState<Level3> {
                 }),
               ],
             )
-          : Container(),
+          : Container(
+              color: Colors.white,
+            ),
     );
   }
 }

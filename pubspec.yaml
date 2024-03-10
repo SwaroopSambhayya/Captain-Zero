@@ -99,10 +99,12 @@ flutter:
     - assets/images/bin.png
     - assets/images/tin.png
     - assets/images/paper.png
-    - assets/images/earth.webp
     - assets/images/greenery.jpeg
     - assets/images/add_to_wallet.png
     - assets/icon/captainzero.png
+    - assets/gif/level1.gif
+    - assets/gif/level2.gif
+    - assets/gif/level3.gif
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

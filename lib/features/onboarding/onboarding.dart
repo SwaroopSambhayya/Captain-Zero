@@ -3,9 +3,8 @@ import 'package:captain_zero/features/onboarding/components/carousel.dart';
 import 'package:captain_zero/features/onboarding/components/game_intro.dart';
 import 'package:captain_zero/features/onboarding/components/reward.dart';
 import 'package:captain_zero/shared/components/grand_button.dart';
-import 'package:captain_zero/shared/theme.dart';
+import 'package:captain_zero/shared/enums.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -68,7 +67,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       context.go('/level1');
                       SharedPreferences pref =
                           await SharedPreferences.getInstance();
-                      pref.setBool('onboarded', true);
+                      pref.setString(
+                        'gameState',
+                        GameState.onBoarded.name,
+                      );
                     }
                   },
                   text: currentIndex == 0
