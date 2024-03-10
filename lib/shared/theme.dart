@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
 
+Color primaryTextColor = Colors.white;
 ThemeData gameTheme = ThemeData(
     scaffoldBackgroundColor: Colors.black,
     fontFamily: "GillSans",
     primaryColor: Colors.black,
-    iconTheme: const IconThemeData(color: Colors.white),
+    iconTheme: IconThemeData(color: primaryTextColor),
     cardColor: const Color(0xff45C074),
     dialogTheme: const DialogTheme(backgroundColor: Colors.black),
-    extensions: const <ThemeExtension<dynamic>>[
+    textTheme: TextTheme(
+      titleLarge: TextStyle(
+        color: primaryTextColor,
+      ),
+      bodyLarge: TextStyle(color: primaryTextColor),
+    ),
+    extensions: <ThemeExtension<dynamic>>[
       BrandColors(
         brandColor1: Colors.black,
-        brandColor2: Color(0xff45C074),
-        brandColor3: Color(0xffF6A69B),
-        brandColor4: Color(0xff89A5E3),
-        brandColor5: Colors.white,
-        borderColor1: Color(0xFF2C2C2C),
-        borderColor2: Color(0xFF1F8A5D),
-        borderColor3: Color(0xffF27C6C),
+        brandColor2: const Color(0xff45C074),
+        brandColor3: const Color(0xffF6A69B),
+        brandColor4: const Color(0xff89A5E3),
+        brandColor5: primaryTextColor,
+        borderColor1: const Color(0xFF2C2C2C),
+        borderColor2: const Color(0xFF1F8A5D),
+        borderColor3: const Color(0xffF27C6C),
       )
     ]);
 
