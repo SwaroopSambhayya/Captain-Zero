@@ -32,7 +32,6 @@ class _LevelCompletedState extends ConsumerState<LevelCompleted> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           children: [
