@@ -1,4 +1,4 @@
-import 'package:captain_zero/features/level2/utils/help_dialog.dart';
+import 'package:captain_zero/shared/components/help_dialog.dart';
 import 'package:captain_zero/shared/theme.dart';
 import 'package:flutter/material.dart';
 

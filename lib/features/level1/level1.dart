@@ -1,6 +1,6 @@
 import 'package:captain_zero/features/level1/components/recycle_bin.dart';
 import 'package:captain_zero/features/level1/components/trash.dart';
-import 'package:captain_zero/features/level2/utils/help_dialog.dart';
+import 'package:captain_zero/shared/components/help_dialog.dart';
 import 'package:captain_zero/shared/components/level_App_bar.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
@@ -34,7 +34,7 @@ class _Level1State extends State<Level1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: "Collect the Trash",
+        title: "Trash Dash",
         leadingText: "Level 1",
         onActionPress: () {
           showHelpDialog(context, 1);
@@ -47,7 +47,9 @@ class _Level1State extends State<Level1> {
                 onGameEnd: () => context.go('/levelComplete/1'),
               ),
             )
-          : Container(),
+          : Container(
+              color: Colors.white,
+            ),
     );
   }
 

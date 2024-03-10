@@ -40,8 +40,8 @@ HelpDialogDetails getHelpDetailsonLevel(int level) {
     case 3:
       return HelpDialogDetails(
         title: game3,
-        description: level3Description,
-        hintMessage: level2HintMessage,
+        description: saveEarthDescription,
+        hintMessage: level3HintMessage,
       );
     default:
       return const HelpDialogDetails(
