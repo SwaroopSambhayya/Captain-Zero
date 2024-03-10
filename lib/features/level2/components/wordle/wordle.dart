@@ -20,10 +20,10 @@ class _WordleState extends ConsumerState<Wordle> {
     ["PLANET", "HYDRO", "FOSSIL"],
     ["FUEL", "ENERGY", "COAL"],
     ["CARBON", "SMOKE", "GREEN"],
-    ["SOLAR", "WIND", "AIR"],
-    ["WATER", "REUSE", "FOREST"],
-    ["SUSTAIN", "POWER", "EARTH"],
-    ["SOIL", "PLANT", "TREE"],
+    // ["SOLAR", "WIND", "AIR"],
+    // ["WATER", "REUSE", "FOREST"],
+    // ["SUSTAIN", "POWER", "EARTH"],
+    // ["SOIL", "PLANT", "TREE"],
     // ["FILTER", "FOREST", "CLIMATE"],
     // ["SUSTAIN", "HARVEST", "NATURAL"]
   ];

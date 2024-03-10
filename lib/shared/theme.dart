@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 ThemeData gameTheme = ThemeData(
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: Colors.black,
     fontFamily: "GillSans",
     primaryColor: Colors.black,
     iconTheme: const IconThemeData(color: Colors.white),

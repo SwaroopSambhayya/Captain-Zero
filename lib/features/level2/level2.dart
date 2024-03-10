@@ -51,9 +51,10 @@ class _Level2State extends ConsumerState<Level2> {
               children: [
                 Expanded(
                   child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 10)
-                        .copyWith(bottom: 60)
-                        .copyWith(right: 15),
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 30)
+                            .copyWith(bottom: 60)
+                            .copyWith(right: 15),
                     decoration: BoxDecoration(
                       color: colors.brandColor2,
                       boxShadow: [
@@ -68,7 +69,9 @@ class _Level2State extends ConsumerState<Level2> {
                 ),
               ],
             )
-          : Container(),
+          : Container(
+              color: colors.brandColor5,
+            ),
     );
   }
 }

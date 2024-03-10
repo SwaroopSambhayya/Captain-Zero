@@ -1,5 +1,5 @@
-import 'package:captain_zero/features/splash/components/captain_zero.dart';
-import 'package:captain_zero/features/splash/components/game_intro.dart';
+import 'package:captain_zero/features/onboarding/components/captain_zero.dart';
+import 'package:captain_zero/features/onboarding/components/game_intro.dart';
 import 'package:captain_zero/shared/components/grand_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
