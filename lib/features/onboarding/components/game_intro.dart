@@ -21,18 +21,26 @@ class _GameIntroState extends State<GameIntro> {
       (index) => Padding(
         padding: EdgeInsets.only(left: 10.0, top: (2 - index) * 40),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Image.asset(
               'lib/shared/assets/images/Level${index + 1}.png',
               width: 70,
             ).animate(
+              delay: Duration(milliseconds: index * 500),
               onComplete: (controller) {
-                controller.reverse();
+                controller.loop(reverse: true);
               },
-            )..moveY(
-                begin: 0,
-                end: 10,
+            )
+              ..fadeIn(
+                  delay: Duration(milliseconds: index * 500),
+                  duration: const Duration(
+                    milliseconds: 600,
+                  ),
+                  curve: Curves.easeInOut)
+              ..moveY(
+                delay: const Duration(milliseconds: 1000),
+                begin: -7,
+                end: 0,
                 curve: Curves.easeInOut,
                 duration: const Duration(milliseconds: 1000),
               ),
@@ -51,7 +59,12 @@ class _GameIntroState extends State<GameIntro> {
                   ],
                 ),
               ),
-            )
+            ).animate()
+              ..scaleY(
+                  delay: Duration(milliseconds: index * 500),
+                  duration: const Duration(milliseconds: 1000),
+                  curve: Curves.easeInOut,
+                  begin: 0)
           ],
         ),
       ),
@@ -60,12 +73,24 @@ class _GameIntroState extends State<GameIntro> {
 
   @override
   Widget build(BuildContext context) {
+    final brandColors = Theme.of(context).extension<BrandColors>()!;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: imageList,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+          child: Text(
+            "This game consists of 3 levels, each level has it's own significance on planet sustainability. Complete each level and spread awareness on planet sustainability in a fun way!",
+            textAlign: TextAlign.center,
+            style: Theme.of(context)
+                .textTheme
+                .bodyLarge
+                ?.copyWith(color: brandColors.brandColor5),
+          ),
         )
       ],
     );
