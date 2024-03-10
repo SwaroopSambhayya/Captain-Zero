@@ -10,9 +10,10 @@ Future<bool> showHelpDialog(BuildContext context, int level) async {
       return Dialog(
         backgroundColor: Colors.transparent,
         alignment: Alignment.center,
-        insetPadding: const EdgeInsets.symmetric(horizontal: 20),
+        insetPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         child: CustomDialog(
           dialogAsset: 'lib/shared/assets/images/Level$level.png',
+          gifAsset: 'assets/gif/level$level.gif',
           details: getHelpDetailsonLevel(level),
           onPressed: () {
             Navigator.pop(context, true);
@@ -40,8 +41,8 @@ HelpDialogDetails getHelpDetailsonLevel(int level) {
     case 3:
       return HelpDialogDetails(
         title: game3,
-        description: level3Description,
-        hintMessage: level2HintMessage,
+        description: saveEarthDescription,
+        hintMessage: level3HintMessage,
       );
     default:
       return const HelpDialogDetails(

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LevelCompleted extends ConsumerStatefulWidget {
   const LevelCompleted({super.key, required this.level});
@@ -18,8 +19,13 @@ class _LevelCompletedState extends ConsumerState<LevelCompleted> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       ref.read(audioProvider).playVictorySound();
+      SharedPreferences pref = await SharedPreferences.getInstance();
+      pref.setString(
+        'gameState',
+        'level${widget.level}Completed',
+      );
     });
   }
 
