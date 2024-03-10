@@ -70,6 +70,12 @@ class RecycleGame extends FlameGame with PanDetector {
   late TextComponent missedText;
 
   @override
+  void onDispose() {
+    FlameAudio.bgm.stop();
+    super.onDispose();
+  }
+
+  @override
   void render(Canvas canvas) {
     canvas.drawRect(
       Rect.fromLTWH(0, 0, size.x, size.y),
@@ -120,7 +126,7 @@ class RecycleGame extends FlameGame with PanDetector {
   @override
   void update(double dt) {
     super.update(dt);
-    if (trashCollected >= 50) {
+    if (trashCollected >= 10) {
       FlameAudio.bgm.stop();
       onGameEnd();
     }

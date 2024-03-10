@@ -1,6 +1,8 @@
 import 'package:captain_zero/shared/components/help_dialog.dart';
 import 'package:captain_zero/shared/theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class CustomDialog extends StatelessWidget {
   final String dialogAsset;
@@ -18,7 +20,7 @@ class CustomDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final brandColors = Theme.of(context).extension<BrandColors>()!;
-    double topIconSize = MediaQuery.of(context).size.width * 0.148;
+    double topIconSize = MediaQuery.of(context).size.width * 0.169;
     return Container(
       height: MediaQuery.of(context).size.height * 0.85,
       decoration: BoxDecoration(
@@ -45,120 +47,135 @@ class CustomDialog extends StatelessWidget {
                 ),
               ),
             ),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 4, bottom: 40),
-                  child: IconButton(
-                    iconSize: 24,
-                    onPressed: onPressed,
-                    icon: const Icon(
-                      Icons.close,
-                      size: 21,
-                    ),
-                  ),
+            Positioned(
+              right: 10,
+              top: 35,
+              child: IconButton(
+                iconSize: 24,
+                onPressed: onPressed,
+                icon: const Icon(
+                  Icons.close,
+                  size: 21,
                 ),
-                Container(
-                  padding: const EdgeInsets.all(15).copyWith(top: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        details.title,
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge
-                            ?.copyWith(color: brandColors.brandColor5),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: Text(
-                          details.description,
-                          textAlign: TextAlign.justify,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge
-                              ?.copyWith(color: brandColors.brandColor5),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.symmetric(vertical: 5),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 2),
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                bottom: BorderSide(
-                                    color: brandColors.brandColor2!,
-                                    width: 1.5),
-                                right: BorderSide(
-                                    color: brandColors.brandColor2!,
-                                    width: 1.5),
-                              )),
-                              child: Text(
-                                "Hint",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge
-                                    ?.copyWith(color: brandColors.brandColor5),
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              details.hintMessage,
+              ),
+            ),
+            Positioned(
+              top: MediaQuery.of(context).size.height * 0.15,
+              left: 0,
+              right: 0,
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height * 0.7,
+                child: ListView(
+                  shrinkWrap: true,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(15).copyWith(top: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            details.title,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(color: brandColors.brandColor5),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: Text(
+                              details.description,
+                              textAlign: TextAlign.justify,
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyLarge
                                   ?.copyWith(color: brandColors.brandColor5),
                             ),
-                            const SizedBox(height: 8),
-                            Container(
-                              margin: const EdgeInsets.symmetric(vertical: 5),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 2),
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                      color: brandColors.brandColor2!,
-                                      width: 1.5),
-                                  right: BorderSide(
-                                      color: brandColors.brandColor2!,
-                                      width: 1.5),
-                                ),
-                              ),
-                              child: Text(
-                                "Demo",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge
-                                    ?.copyWith(color: brandColors.brandColor5),
-                              ),
-                            ),
-                            Center(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.white)),
-                                child: SizedBox(
-                                  child: Image.asset(
-                                    gifAsset,
-                                    scale: 2.5,
+                          ),
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin:
+                                      const EdgeInsets.symmetric(vertical: 5),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 2),
+                                  decoration: BoxDecoration(
+                                      border: Border(
+                                    bottom: BorderSide(
+                                        color: brandColors.brandColor2!,
+                                        width: 1.5),
+                                    right: BorderSide(
+                                        color: brandColors.brandColor2!,
+                                        width: 1.5),
+                                  )),
+                                  child: Text(
+                                    "Hint",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge
+                                        ?.copyWith(
+                                            color: brandColors.brandColor5),
                                   ),
                                 ),
-                              ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  details.hintMessage,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyLarge
+                                      ?.copyWith(
+                                          color: brandColors.brandColor5),
+                                ),
+                                const SizedBox(height: 8),
+                                Container(
+                                  margin:
+                                      const EdgeInsets.symmetric(vertical: 5),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 2),
+                                  decoration: BoxDecoration(
+                                    border: Border(
+                                      bottom: BorderSide(
+                                          color: brandColors.brandColor2!,
+                                          width: 1.5),
+                                      right: BorderSide(
+                                          color: brandColors.brandColor2!,
+                                          width: 1.5),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    "Demo",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge
+                                        ?.copyWith(
+                                            color: brandColors.brandColor5),
+                                  ),
+                                ),
+                                Center(
+                                  child: Container(
+                                    margin: const EdgeInsets.only(top: 20),
+                                    decoration: BoxDecoration(
+                                        border:
+                                            Border.all(color: Colors.white)),
+                                    child: SizedBox(
+                                      child: Image.asset(
+                                        gifAsset,
+                                        scale: 2,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ],
         ),
