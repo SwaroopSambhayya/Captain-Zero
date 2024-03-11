@@ -51,9 +51,9 @@ class _SummaryState extends State<Summary> {
             ),
             GrandButton(
                 onPress: () async {
-                  context.go('/');
+                  context.go('/level1');
                   final pref = await SharedPreferences.getInstance();
-                  pref.setString('gameState', GameState.none.name);
+                  pref.setString('gameState', GameState.onBoarded.name);
                 },
                 text: 'Play Again')
           ],
