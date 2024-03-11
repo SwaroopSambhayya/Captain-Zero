@@ -42,34 +42,78 @@ class _GenericPassState extends State<GenericPass> {
     ProgressDialog progressDialog = ProgressDialog(context: context);
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Visibility(
+        visible: userName.isNotEmpty,
+        child: InkWell(
+          onTap: () {
+            _generateAndAddPass(progressDialog);
+          },
+          child: Image.asset(
+            'assets/images/add_to_wallet.png',
+          ),
+        ),
+      ),
       appBar: AppBar(
+        surfaceTintColor: Theme.of(context).scaffoldBackgroundColor,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         actions: [
-          IconButton(
-              onPressed: () => context.go('/summary'),
-              icon: const Icon(Icons.navigate_next_rounded))
+          InkWell(
+            onTap: () {
+              context.go('/summary');
+            },
+            child: Row(
+              children: [
+                Text(
+                  "Next",
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge
+                      ?.copyWith(fontSize: 18),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 4),
+                  child: Icon(
+                    Icons.arrow_right_alt,
+                    color: Colors.white,
+                    size: 28,
+                  ),
+                )
+              ],
+            ),
+          )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Column(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text(
+                  Text(
                     'Congrats!! You have earned this certificate',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 50),
                   TextFormField(
-                    style: const TextStyle(color: Colors.black),
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       labelText: 'Enter your name',
-                      border: OutlineInputBorder(),
+                      labelStyle: Theme.of(context).textTheme.bodyLarge,
+                      enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Theme.of(context).cardColor),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Theme.of(context).cardColor),
+                      ),
                     ),
                     onChanged: (value) {
                       _updateName(value);
@@ -77,10 +121,8 @@ class _GenericPassState extends State<GenericPass> {
                   ),
                 ],
               ),
-            ),
-            Expanded(
-              flex: 3,
-              child: Card(
+              const SizedBox(height: 50),
+              Card(
                   elevation: 4,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24),
@@ -90,133 +132,110 @@ class _GenericPassState extends State<GenericPass> {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(
-                        flex: 9,
-                        child: Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                    child: Image.asset(
-                                      'assets/icon/captainzero.png',
-                                    ),
-                                  ),
-                                  const SizedBox(width: 24),
-                                  const Text(
-                                    "Captian Zero",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 20,
-                                      color: Colors.white,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              const SizedBox(height: 8),
-                              const Text(
-                                'Champion',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w100,
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Text(
-                                userName,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 24,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Expanded(
-                        flex: 9,
+                      Padding(
+                        padding: const EdgeInsets.all(16),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Stack(
+                            Row(
                               children: [
-                                Center(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12),
-                                      color: Colors.white,
-                                    ),
-                                    alignment: Alignment.center,
-                                    height: width / 3.5,
-                                    width: width / 3.5,
+                                CircleAvatar(
+                                  child: Image.asset(
+                                    'assets/icon/captainzero.png',
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(6.0),
-                                  child: Center(
-                                    child: SizedBox(
-                                      height: width / 4,
-                                      width: width / 4,
-                                      child: PrettyQrView(
-                                        qrImage: qrImage,
-                                        decoration: const PrettyQrDecoration(),
-                                      ),
-                                    ),
+                                const SizedBox(width: 24),
+                                const Text(
+                                  "Captian Zero",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 20,
+                                    color: Colors.white,
                                   ),
-                                ),
+                                )
                               ],
                             ),
                             const SizedBox(height: 8),
-                            const Center(
-                              child: Text(
-                                'Certificate Credentials',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w100,
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                ),
+                            const Text(
+                              'Champion',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w100,
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              userName,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 24,
+                                color: Colors.white,
                               ),
                             ),
                           ],
                         ),
                       ),
-                      Expanded(
-                        flex: 2,
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: ClipRRect(
-                            borderRadius: const BorderRadius.only(
-                              bottomLeft: Radius.circular(24),
-                              bottomRight: Radius.circular(24),
+                      const SizedBox(height: 8),
+                      Column(
+                        children: [
+                          Stack(
+                            children: [
+                              Center(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: Colors.white,
+                                  ),
+                                  alignment: Alignment.center,
+                                  height: width / 3.5,
+                                  width: width / 3.5,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(6.0),
+                                child: Center(
+                                  child: SizedBox(
+                                    height: width / 4,
+                                    width: width / 4,
+                                    child: PrettyQrView(
+                                      qrImage: qrImage,
+                                      decoration: const PrettyQrDecoration(),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 8),
+                          const Center(
+                            child: Text(
+                              'Certificate Credentials',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w100,
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
                             ),
-                            child: Image.asset(
-                              'assets/images/greenery.jpeg',
-                              fit: BoxFit.fitWidth,
-                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(24),
+                            bottomRight: Radius.circular(24),
+                          ),
+                          child: Image.asset(
+                            'assets/images/greenery.jpeg',
+                            fit: BoxFit.fitWidth,
                           ),
                         ),
                       )
                     ],
                   )),
-            ),
-            Expanded(
-              flex: 1,
-              child: Visibility(
-                visible: userName.isNotEmpty,
-                child: InkWell(
-                  onTap: () {
-                    _generateAndAddPass(progressDialog);
-                  },
-                  child: Image.asset(
-                    'assets/images/add_to_wallet.png',
-                  ),
-                ),
-              ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );
