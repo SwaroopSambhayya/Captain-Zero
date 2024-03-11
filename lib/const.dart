@@ -18,6 +18,8 @@ String level2HintMessage =
     "Decipher all 9 words to shine a light on important ecological terms and practices";
 String level3HintMessage =
     'Protect our home for 90 seconds to ensure its safety and demonstrate the importance of our planets delicate shield.';
+String summary =
+    'Through quick reflexes and strategic thinking, you have not only conquered challenges but also embraced the vital principles of environmental stewardship.\n\nEach level has instilled valuable lessons about waste management, the power of words in spreading awareness, and the critical importance of our ozone layer.\n\nAs you carry your Sustainable Hero Certificate in your Google Wallet, let it be a reminder of your contribution to a greener future and a symbol to inspire others in the journey towards sustainability.';
 String game2 = "Jumbled Words";
 String game1 = "Trash Dash";
 String game3 = "Save The Earth";

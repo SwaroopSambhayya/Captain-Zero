@@ -1,4 +1,3 @@
-import 'package:captain_zero/shared/components/generic_pass_widget.dart';
 import 'package:captain_zero/shared/theme.dart';
 import 'package:flutter/material.dart';
 

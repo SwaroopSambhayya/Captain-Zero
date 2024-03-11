@@ -126,7 +126,7 @@ class RecycleGame extends FlameGame with PanDetector {
   @override
   void update(double dt) {
     super.update(dt);
-    if (trashCollected >= 10) {
+    if (trashCollected >= 50) {
       FlameAudio.bgm.stop();
       onGameEnd();
     }
