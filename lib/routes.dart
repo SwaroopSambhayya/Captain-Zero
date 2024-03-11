@@ -3,6 +3,7 @@ import 'package:captain_zero/features/level2/level2.dart';
 import 'package:captain_zero/features/level3/level3.dart';
 import 'package:captain_zero/features/levelStatus/level_status.dart';
 import 'package:captain_zero/features/onboarding/onboarding.dart';
+import 'package:captain_zero/features/summary.dart';
 import 'package:captain_zero/shared/components/generic_pass_widget.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -53,6 +54,10 @@ final router = GoRouter(
     GoRoute(
       path: '/genericPass',
       builder: (context, state) => const GenericPass(),
+    ),
+    GoRoute(
+      path: '/summary',
+      builder: (context, state) => const Summary(),
     ),
   ],
 );

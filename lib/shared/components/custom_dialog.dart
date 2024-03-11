@@ -1,8 +1,6 @@
 import 'package:captain_zero/shared/components/help_dialog.dart';
 import 'package:captain_zero/shared/theme.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class CustomDialog extends StatelessWidget {
   final String dialogAsset;

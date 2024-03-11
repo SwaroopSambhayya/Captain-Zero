@@ -1,6 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uuid/uuid.dart';
@@ -52,13 +52,15 @@ class _GenericPassState extends State<GenericPass> {
           children: [
             Expanded(
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   const Text(
                     'Congrats!! You have earned this certificate',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 8),
                   TextFormField(
+                    style: const TextStyle(color: Colors.black),
                     decoration: const InputDecoration(
                       labelText: 'Enter your name',
                       border: OutlineInputBorder(),
@@ -71,7 +73,7 @@ class _GenericPassState extends State<GenericPass> {
               ),
             ),
             Expanded(
-              flex: 4,
+              flex: 3,
               child: Card(
                   elevation: 4,
                   shape: RoundedRectangleBorder(
@@ -83,7 +85,7 @@ class _GenericPassState extends State<GenericPass> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
-                        flex: 2,
+                        flex: 9,
                         child: Padding(
                           padding: const EdgeInsets.all(16),
                           child: Column(
@@ -107,7 +109,7 @@ class _GenericPassState extends State<GenericPass> {
                                   )
                                 ],
                               ),
-                              const SizedBox(height: 12),
+                              const SizedBox(height: 8),
                               const Text(
                                 'Champion',
                                 style: TextStyle(
@@ -128,9 +130,9 @@ class _GenericPassState extends State<GenericPass> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 24),
+                      const SizedBox(height: 8),
                       Expanded(
-                        flex: 3,
+                        flex: 9,
                         child: Column(
                           children: [
                             Stack(
@@ -142,16 +144,16 @@ class _GenericPassState extends State<GenericPass> {
                                       color: Colors.white,
                                     ),
                                     alignment: Alignment.center,
-                                    height: width / 2.5,
-                                    width: width / 2.5,
+                                    height: width / 3.5,
+                                    width: width / 3.5,
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.all(14.0),
+                                  padding: const EdgeInsets.all(6.0),
                                   child: Center(
                                     child: SizedBox(
-                                      height: width / 3,
-                                      width: width / 3,
+                                      height: width / 4,
+                                      width: width / 4,
                                       child: PrettyQrView(
                                         qrImage: qrImage,
                                         decoration: const PrettyQrDecoration(),
@@ -161,7 +163,7 @@ class _GenericPassState extends State<GenericPass> {
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 12),
+                            const SizedBox(height: 8),
                             const Center(
                               child: Text(
                                 'Certificate Credentials',
@@ -176,6 +178,7 @@ class _GenericPassState extends State<GenericPass> {
                         ),
                       ),
                       Expanded(
+                        flex: 2,
                         child: SizedBox(
                           width: double.infinity,
                           child: ClipRRect(
@@ -193,19 +196,19 @@ class _GenericPassState extends State<GenericPass> {
                     ],
                   )),
             ),
-            const SizedBox(
-              height: 16,
-            ),
             Expanded(
               flex: 1,
               child: Visibility(
-                  visible: userName.isNotEmpty,
-                  child: GestureDetector(
-                    onTap: () {
-                      _generateAndAddPass(progressDialog);
-                    },
-                    child: Image.asset('assets/images/add_to_wallet.png'),
-                  )),
+                visible: userName.isNotEmpty,
+                child: InkWell(
+                  onTap: () {
+                    _generateAndAddPass(progressDialog);
+                  },
+                  child: Image.asset(
+                    'assets/images/add_to_wallet.png',
+                  ),
+                ),
+              ),
             )
           ],
         ),
@@ -233,6 +236,8 @@ class _GenericPassState extends State<GenericPass> {
       final link = data['passLink'];
       launchUrl(Uri.parse(link));
       progressDialog.close();
+      // navigate
+      context.go('/summary');
     } else {
       progressDialog.close();
       showDialog(
