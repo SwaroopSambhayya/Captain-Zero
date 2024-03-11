@@ -44,7 +44,13 @@ class _GenericPassState extends State<GenericPass> {
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () => context.go('/summary'),
+              icon: const Icon(Icons.navigate_next_rounded))
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
