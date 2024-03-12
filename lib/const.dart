@@ -13,7 +13,7 @@ String saveEarthDescription =
     'The Earth is under threat from harmful UV(B and C) rays, and its only protection is the ozone layer you control. Rotate the ozone shield around the planet to fend off incoming rays.';
 
 String level1HintMessage =
-    "Swipe your recycle bin left or right to catch the debris. Collect 50 pieces of trash to clear the clutter and complete the level.";
+    "Swipe your recycle bin left or right to catch the debris. Collect 50 pieces of trash to clear the clutter and complete the level and if you miss 8 trashes then game over!.";
 String level2HintMessage =
     "Decipher all 9 words to shine a light on important ecological terms and practices";
 String level3HintMessage =

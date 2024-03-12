@@ -70,7 +70,13 @@ class _Level3State extends ConsumerState<Level3> {
                     level3State.select((value) => value.level3game),
                   );
                   if (level3GameState == Level3Game.gameOver) {
-                    return const GameOverUI();
+                    return GameOverUI(
+                      onTryAgain: () {
+                        ref
+                            .read(level3State.notifier)
+                            .changeGameState(Level3Game.playing);
+                      },
+                    );
                   }
 
                   return const SizedBox();

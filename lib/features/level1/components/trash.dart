@@ -1,9 +1,14 @@
 import 'dart:math';
 import 'package:captain_zero/features/level1/components/recycle_bin.dart';
+import 'package:captain_zero/features/level1/enum.dart';
 import 'package:captain_zero/features/level1/level1.dart';
+import 'package:captain_zero/features/level1/providers/game_state.dart';
 import 'package:flame/components.dart';
+import 'package:flame_audio/flame_audio.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
 
-class Trash extends SpriteComponent with HasGameRef<RecycleGame> {
+class Trash extends SpriteComponent
+    with HasGameRef<RecycleGame>, RiverpodComponentMixin {
   final RecycleBin recycleBin;
   final Vector2 gameSize;
 
@@ -24,6 +29,8 @@ class Trash extends SpriteComponent with HasGameRef<RecycleGame> {
 
   @override
   Future<void> onLoad() async {
+    super.onLoad();
+
     String randomTrashImages = trashImages[_random.nextInt(trashImages.length)];
     sprite = await gameRef.loadSprite(randomTrashImages);
   }
@@ -33,6 +40,12 @@ class Trash extends SpriteComponent with HasGameRef<RecycleGame> {
     super.update(dt);
     // falling effect
     position.add(Vector2(0, speed * dt));
+
+    if (game.trashMissed > 7) {
+      FlameAudio.bgm.stop();
+      game.pauseEngine();
+      ref.read(gameStateProvider.notifier).state = Level1GameState.gameOver;
+    }
 
     // Rotate while falling
     angle += rotationSpeed * dt;

@@ -1,5 +1,8 @@
 import 'package:captain_zero/features/level1/components/recycle_bin.dart';
 import 'package:captain_zero/features/level1/components/trash.dart';
+import 'package:captain_zero/features/level1/enum.dart';
+import 'package:captain_zero/features/level1/providers/game_state.dart';
+import 'package:captain_zero/features/level3/components/game_over_ui.dart';
 import 'package:captain_zero/shared/components/help_dialog.dart';
 import 'package:captain_zero/shared/components/level_App_bar.dart';
 import 'package:flame/components.dart';
@@ -7,8 +10,13 @@ import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flame_audio/flame_audio.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
+
+final GlobalKey<RiverpodAwareGameWidgetState> gameWidgetKey =
+    GlobalKey<RiverpodAwareGameWidgetState>();
 
 class Level1 extends StatefulWidget {
   const Level1({Key? key}) : super(key: key);
@@ -42,10 +50,29 @@ class _Level1State extends State<Level1> {
         iconData: Icons.help,
       ),
       body: _isDialogShown
-          ? GameWidget(
-              game: RecycleGame(
-                onGameEnd: () => context.go('/levelComplete/1'),
-              ),
+          ? Stack(
+              children: [
+                RiverpodAwareGameWidget(
+                  key: gameWidgetKey,
+                  game: RecycleGame(
+                    onGameEnd: () => context.go('/levelComplete/1'),
+                  ),
+                ),
+                Consumer(builder: (context, ref, child) {
+                  if (ref.watch(gameStateProvider) ==
+                      Level1GameState.gameOver) {
+                    return GameOverUI(
+                      onTryAgain: () {
+                        setState(() {
+                          ref.read(gameStateProvider.notifier).state =
+                              Level1GameState.isPlaying;
+                        });
+                      },
+                    );
+                  }
+                  return const SizedBox.shrink();
+                })
+              ],
             )
           : Container(
               color: Colors.white,
@@ -56,7 +83,7 @@ class _Level1State extends State<Level1> {
   void showInfoDialog() {}
 }
 
-class RecycleGame extends FlameGame with PanDetector {
+class RecycleGame extends FlameGame with PanDetector, RiverpodGameMixin {
   final Function onGameEnd;
   RecycleGame({required this.onGameEnd});
 

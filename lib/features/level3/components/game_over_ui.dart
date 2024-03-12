@@ -8,7 +8,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rive/rive.dart';
 
 class GameOverUI extends ConsumerStatefulWidget {
-  const GameOverUI({super.key});
+  final Function() onTryAgain;
+  const GameOverUI({super.key, required this.onTryAgain});
 
   @override
   ConsumerState<GameOverUI> createState() => _GameOverUIState();
@@ -71,11 +72,7 @@ class _GameOverUIState extends ConsumerState<GameOverUI>
             const SizedBox(height: 40),
             GrandButton(
               text: 'TRY AGAIN!',
-              onPress: () {
-                ref
-                    .read(level3State.notifier)
-                    .changeGameState(Level3Game.playing);
-              },
+              onPress: widget.onTryAgain,
             ),
           ],
         ),
