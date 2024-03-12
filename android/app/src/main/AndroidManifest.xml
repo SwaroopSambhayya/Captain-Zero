@@ -2,7 +2,7 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:label="captain_zero"
+        android:label="Captain Zero"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
