@@ -13,8 +13,8 @@ class Trash extends SpriteComponent
   final Vector2 gameSize;
 
   static final Random _random = Random();
-  static const double speed = 250;
-  static const double rotationSpeed = 3;
+  static const double speed = 200;
+  static const double rotationSpeed = 4;
   static const List<String> trashImages = [
     'plastic.png',
     'bottle.png',

@@ -79,11 +79,10 @@ class _Level1State extends State<Level1> {
             ),
     );
   }
-
-  void showInfoDialog() {}
 }
 
-class RecycleGame extends FlameGame with PanDetector, RiverpodGameMixin {
+class RecycleGame extends FlameGame
+    with HorizontalDragDetector, RiverpodGameMixin {
   final Function onGameEnd;
   RecycleGame({required this.onGameEnd});
 
@@ -163,12 +162,13 @@ class RecycleGame extends FlameGame with PanDetector, RiverpodGameMixin {
   }
 
   @override
-  void onPanUpdate(DragUpdateInfo info) {
+  void onHorizontalDragUpdate(DragUpdateInfo info) {
     const movementIntensity = 0.04;
     if (info.delta.global.x < 0) {
       bin.moveLeft(dt: movementIntensity);
     } else if (info.delta.global.x > 0) {
       bin.moveRight(dt: movementIntensity);
     }
+    super.onHorizontalDragUpdate(info);
   }
 }

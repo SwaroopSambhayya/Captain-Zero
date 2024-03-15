@@ -1,6 +1,4 @@
-import 'package:captain_zero/features/level3/const.dart';
 import 'package:captain_zero/features/level3/providers/audio_provider.dart';
-import 'package:captain_zero/features/level3/providers/game_state_provider.dart';
 import 'package:captain_zero/shared/components/grand_button.dart';
 import 'package:captain_zero/shared/theme.dart';
 import 'package:flutter/material.dart';
