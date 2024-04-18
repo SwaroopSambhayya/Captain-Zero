@@ -163,7 +163,7 @@ class RecycleGame extends FlameGame
 
   @override
   void onHorizontalDragUpdate(DragUpdateInfo info) {
-    const movementIntensity = 0.04;
+    const movementIntensity = 0.1;
     if (info.delta.global.x < 0) {
       bin.moveLeft(dt: movementIntensity);
     } else if (info.delta.global.x > 0) {
